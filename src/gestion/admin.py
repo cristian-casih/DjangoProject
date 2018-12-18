@@ -12,3 +12,4 @@ class AdminPersonal(admin.ModelAdmin):
 
 admin.site.register(Personal, AdminPersonal)
 admin.site.register(Inventario)
+

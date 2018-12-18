@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 from .forms import RegForm
 from .models import Personal
 
@@ -13,7 +14,7 @@ def inicio(request):
         abc1 = form_data.get('nombre')
         abc2 = form_data.get('apellido')
         abc3 = form_data.get('email')
-        obj = Personal.objects.create(dni=abc, nombre=abc1, apellido=abc2, email=abc3 )
+        obj = Personal.objects.create(dni=abc, nombre=abc1, apellido=abc2, email=abc3)
     context = {
         "el_form": form,
     }
