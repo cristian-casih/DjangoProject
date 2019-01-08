@@ -12,6 +12,7 @@ class RegModelForm(forms.ModelForm):
         email = self.cleaned_data.get("email")
         email_base, proveeder = email.split("@")
         dominio, extension = proveeder.split(".")
+
         print(dominio)
         if not dominio == "intel":
             raise forms.ValidationError("Por favor utiliza un mail con dominio @intel")

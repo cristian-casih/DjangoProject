@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% for personal in object_list %}
+    <tr>
+        <td> {{ personal.id }}</td>
+        <td> {{ personal.dni }}</td>
+        <td> {{ personal.nombre }} </td>
+        <td> {{ personal.apellido }} </td>
+<!--        <td> {{ personal.fecha_nacimiento|date:"Y-m-d" }} </td>
+        <td> {{ personal.fecha_registro }} </td>-->
+        <td> {{ personal.email }} </td>
+        <td> {{ personal.estadoactivo }} </td>
+        {% for inventario in personal.inventario_set.all %}
+            <td>{{ inventario.nombre }}</td>
+            <td>{{ inventario.numeroserie }}</td>
+            <td>...</td>
+        {% empty %}
+            <td>!El personal no tiene inventario !</td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+</head>
+<body>
+
+</body>
+</html>
