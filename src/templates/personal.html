@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>PERSONAL</title>
+
+</head>
+<body>
+<form action="{% url 'templates:personal' personal.id %}" method="post">{% csrf_token %}
+
     {% for personal in object_list %}
     <tr>
         <td> {{ personal.id }}</td>
         <td> {{ personal.dni }}</td>
         <td> {{ personal.nombre }} </td>
         <td> {{ personal.apellido }} </td>
-<!--        <td> {{ personal.fecha_nacimiento|date:"Y-m-d" }} </td>
-        <td> {{ personal.fecha_registro }} </td>-->
+        <td> {{ personal.fecha_nacimiento|date:"YYYY-MM-DD" }} </td>
+        <td> {{ personal.fecha_registro|date:"YYYY-MM-DD" }} </td>
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
         {% for inventario in personal.inventario_set.all %}
@@ -22,8 +27,7 @@
         {% endfor %}
     </tr>
 {% endfor %}
-</head>
-<body>
-
+</form>
 </body>
 </html>
+

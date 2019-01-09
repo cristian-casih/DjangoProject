@@ -25,9 +25,10 @@ def inicio(request):
 
     return render(request, "base.html", context)
 
-class EmpleadosList(ListView):
-    model = Personal
 
+class PersonalList(ListView):
+    model = Personal
+    template_name = 'templates/personal.html'
     def get_queryset(self):
-        queryset = Personal.objects.filter(activo=1).order_by('id')
+        queryset = Personal.objects.filter(estadoactivo=True).order_by('id')
         return queryset
