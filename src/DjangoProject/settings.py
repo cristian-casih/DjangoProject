@@ -59,10 +59,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'DjangoProject.urls'
 
+print(BASE_DIR)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,8 +130,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_env","static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "src/static")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_env","media_root")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static_pro", "static"),
+    'static_dev'
 ]

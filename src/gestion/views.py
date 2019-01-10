@@ -23,12 +23,12 @@ def inicio(request):
             "titulo": "Registrado con exito %s!" %(apellido)
         }
 
-    return render(request, "base.html", context)
+    return render(request, "gestion/inicio.html", context)
 
 
 class PersonalList(ListView):
     model = Personal
-    template_name = 'templates/personal.html'
+    template_name = 'gestion/personal_list.html'
+
     def get_queryset(self):
-        queryset = Personal.objects.filter(estadoactivo=True).order_by('id')
-        return queryset
+        return Personal.objects.filter(estadoactivo=True).order_by('id')

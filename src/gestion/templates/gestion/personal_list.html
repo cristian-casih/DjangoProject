@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PERSONAL</title>
+
+</head>
+<body>
+<form action="." method="post">{% csrf_token %}
+
+    {% for personal in object_list %}
+    <tr>
+        ID :<td> {{ personal.id }}</td>
+        DNI :<td> {{ personal.dni }}</td>
+        NOMBRE :<td> {{ personal.nombre }} </td>
+        APELLIDO :<td> {{ personal.apellido }} </td>
+        FECHA DE NACIMIENTO: <td> {{ personal.fecha_nacimiento|date:"Y-M-D" }} </td>
+        FECHA DE REGISTRO :<td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
+        EMAIL : <td> {{ personal.email }} </td>
+        ESTADO ACTIVO: <td> {{ personal.estadoactivo }} </td>
+        {% for inventario in personal.inventario_set.all %}
+            NOMBRE INVENTARIO :<td>{{ inventario.nombre }}</td>
+            NUMERO DE SERIE :<td>{{ inventario.numeroserie }}</td>
+            <td>...</td>
+        {% empty %}
+            <td>!El personal no tiene inventario !</td>
+        {% endfor %}
+    </tr><br>
+{% endfor %}
+</form>
+</body>
+</html>
+

@@ -6,7 +6,7 @@ from .models import Personal
 class RegModelForm(forms.ModelForm):
     class Meta:
         model = Personal
-        fields =["dni","nombre","apellido","fecha_nacimiento","email",]
+        fields =["dni","nombre","apellido","fecha_nacimiento","email"]
 
 
     def clean_email(self):

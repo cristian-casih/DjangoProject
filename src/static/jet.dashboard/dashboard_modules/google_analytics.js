@@ -1,0 +1,1 @@
+/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/dashboard/static/jet.dashboard/dashboard_modules/google_analytics.js

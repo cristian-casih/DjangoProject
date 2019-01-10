@@ -1,0 +1,1 @@
+/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/dashboard/static/jet.dashboard/vendor/chart.js/README.md
