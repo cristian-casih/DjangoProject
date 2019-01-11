@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block head_title %}Bienvenidos | {% endblock %}
 {% block jumbotron%}
 
@@ -15,9 +16,10 @@
 <br/>
 {% block content%}
 <form method="POST" action="">{% csrf_token %}
-{{ el_form.as_p}}
+{{ el_form|crispy }}
 <input type='submit' value='Registrar'/>
 </form>
+<hr/>
 {% endblock %}
 
 
