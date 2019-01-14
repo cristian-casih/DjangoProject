@@ -1,35 +1,48 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>PERSONAL</title>
-
 </head>
-<body>
-<form action="." method="post">{% csrf_token %}
+<table class="table table-bordered" action="." method="post">{% csrf_token %}
+    <thead>
+    <td>#</td>
+    <td>Dni</td>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Fecha de Nac</td>
+    <td>Fecha registro</td>
+    <td>Email</td>
+    <td>Estado Activo</td>
+    <td>Nombre Inventario</td>
+    <td>Numero serie</td>
+    </thead>
 
     {% for personal in object_list %}
     <tr>
-        ID :<td> {{ personal.id }}</td>
-        DNI :<td> {{ personal.dni }}</td>
-        NOMBRE :<td> {{ personal.nombre }} </td>
-        APELLIDO :<td> {{ personal.apellido }} </td>
-        FECHA DE NACIMIENTO: <td> {{ personal.fecha_nacimiento|date:"Y-M-D" }} </td>
-        FECHA DE REGISTRO :<td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
-        EMAIL : <td> {{ personal.email }} </td>
-        ESTADO ACTIVO: <td> {{ personal.estadoactivo }} </td>
+        <td> {{ personal.id }}</td>
+        <td> {{ personal.dni }}</td>
+        <td> {{ personal.nombre }} </td>
+        <td> {{ personal.apellido }} </td>
+        <td> {{ personal.fecha_nacimiento|date:"Y-M-D" }} </td>
+        <td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
+        <td> {{ personal.email }} </td>
+        <td> {{ personal.estadoactivo }} </td>
         {% for inventario in personal.inventario_set.all %}
-            NOMBRE INVENTARIO :<td>{{ inventario.nombre }}</td>
-            NUMERO DE SERIE :<td>{{ inventario.numeroserie }}</td>
+            <td>{{ inventario.nombre }}</td>
+            <td>{{ inventario.numeroserie }}</td>
             <td>...</td>
         {% empty %}
-            <td>!El personal no tiene inventario !</td>
+            <td>¡El personal no tiene inventario !</td>
         {% endfor %}
     </tr><br>
-{% endfor %}
-</form>
-</body>
+
+    {% endfor %}
+    </form>
+    </table>
 </html>
+
 {% endblock %}
