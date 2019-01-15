@@ -17,6 +17,7 @@
     <td>Fecha registro</td>
     <td>Email</td>
     <td>Estado Activo</td>
+    <td>Acciones</td>
     <td>Nombre Inventario</td>
     <td>Numero serie</td>
     </thead>
@@ -31,6 +32,8 @@
         <td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
+            <a class="btn btn-primary" href="{% url 'personal: personal_editar' personal.id%}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'personal: personal_eliminar' personal.id%}">Eliminar</a>
         {% for inventario in personal.inventario_set.all %}
             <td>{{ inventario.nombre }}</td>
             <td>{{ inventario.numeroserie }}</td>
@@ -38,6 +41,7 @@
         {% empty %}
             <td>¡El personal no tiene inventario !</td>
         {% endfor %}
+
     </tr><br>
 
     {% endfor %}

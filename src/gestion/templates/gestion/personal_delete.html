@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de {{ object.nombre }}?</h3>
+    <input class="btn btn-danger" type="submit">Si, eliminar</input></a>
+    <a class="btn btn-default" href="{% url 'personal:personal_list'%}">Cancelar</a>
+</form>
+{% endblock %}

@@ -6,7 +6,21 @@ from .models import Personal
 class RegModelForm(forms.ModelForm):
     class Meta:
         model = Personal
-        fields =["dni","nombre","apellido","fecha_nacimiento","email"]
+        fields = [
+            "dni",
+            "nombre",
+            "apellido",
+            "fecha_nacimiento",
+            "email",
+        ]
+        labels = {
+            "dni": "Dni",
+            "nombre": "Sexo",
+            "apellido": "Apellido",
+            "fecha_nacimiento": "Fecha de Nacimiento",
+            "email": "Mail",
+
+        }
 
 
     def clean_email(self):
