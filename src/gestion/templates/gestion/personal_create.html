@@ -4,8 +4,9 @@
 {{ titulo }}
 <hr/>
 <br/>
+
 {% block content%}
-<form method="POST" action="{% url 'submit' %}">{% csrf_token %}
+<form method="POST">{% csrf_token %}
 {{ el_form|crispy }}
 <input type='submit' value='Registrar'/>
 </form>
