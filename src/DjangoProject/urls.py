@@ -18,13 +18,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 
-namespaces = 'personal'
-
 urlpatterns = [
-    path('', include('gestion.urls')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
+    path('gestion/', include('gestion.urls', 'gestion')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

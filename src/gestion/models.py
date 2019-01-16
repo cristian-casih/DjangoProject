@@ -9,7 +9,7 @@ class Personal (models.Model):
     dni = models.IntegerField(default=0, null=True, blank= True)
     nombre = models.CharField(max_length=100, null=True, blank=True)
     apellido = models.CharField(max_length=100, null=True, blank=True)
-    fecha_nacimiento = models.DateField(null=True, blank=True)
+    fecha_nacimiento = models.DateField(null=False, blank=False)
     fecha_registro = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     email = models.EmailField()
     estadoactivo = models.BooleanField(default=True, editable=True)

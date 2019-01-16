@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'jet.dashboard',
     'jet',
+
     'gestion.apps.GestionConfig',
 
 ]
@@ -111,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -132,8 +132,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "src/static")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_env","media_root")
 STATICFILES_DIRS = [
     'static_dev'
+
 ]

@@ -10,14 +10,14 @@ class RegModelForm(forms.ModelForm):
             "dni",
             "nombre",
             "apellido",
-            "fecha_nacimiento",
+            #"fecha_nacimiento",
             "email",
         ]
         labels = {
             "dni": "Dni",
-            "nombre": "Sexo",
+            "nombre": "Nombre",
             "apellido": "Apellido",
-            "fecha_nacimiento": "Fecha de Nacimiento",
+            #"fecha_nacimiento": "Fecha de Nacimiento",
             "email": "Mail",
 
         }
