@@ -30,7 +30,7 @@
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
         <td>
-            <a class="btn btn-primary" href="{% url 'gestion:personal_create'%}">Editar</a>
+            <a class="btn btn-primary" href="{% url 'gestion:personal_form' pk=personal.id%}">Editar</a>
             <a class="btn btn-danger" href="{% url 'gestion:personal_delete' pk=personal.id%}">Eliminar</a>
         </td>
         {% for inventario in personal.inventario_set.all %}

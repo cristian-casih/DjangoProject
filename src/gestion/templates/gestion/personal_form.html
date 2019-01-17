@@ -4,9 +4,9 @@
 {% block content%}
 
 
-<form method="POST" action="{% url 'gestion:personal_create' %}">
+<form method="POST">
     {% csrf_token %}
-    {{ el_form|crispy }}
+    {{ form|crispy }}
     <input type='submit' value='Registrar'/>
 </form>
 
