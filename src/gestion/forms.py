@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Personal
+from .models import Personal, Inventario
 
 
 class RegModelForm(forms.ModelForm):
@@ -10,18 +10,17 @@ class RegModelForm(forms.ModelForm):
             "dni",
             "nombre",
             "apellido",
-            #"fecha_nacimiento",
+            "fecha_nacimiento",
             "email",
         ]
         labels = {
             "dni": "Dni",
             "nombre": "Nombre",
             "apellido": "Apellido",
-            #"fecha_nacimiento": "Fecha de Nacimiento",
+            "fecha_nacimiento": "Fecha de Nacimiento",
             "email": "Mail",
 
         }
-
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
@@ -32,3 +31,20 @@ class RegModelForm(forms.ModelForm):
         if not dominio == "intel":
             raise forms.ValidationError("Por favor utiliza un mail con dominio @intel")
         return email
+
+class ModelInventario(forms.ModelForm):
+    class Meta:
+        model= Inventario
+        fields = [
+            "nombre",
+            "numeroserie",
+            "descripcion",
+        ]
+        labels = {
+            "nombre": "Nombre",
+            "numeroserie": "Numero de serie",
+            "descripcion": "Descripcion",
+        }
+
+
+

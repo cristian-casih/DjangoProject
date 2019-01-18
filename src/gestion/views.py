@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import RegModelForm
-from .models import Personal
+from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -54,3 +54,9 @@ class PersonalList(ListView):
 
     def get_queryset(self):
         return Personal.objects.filter(estadoactivo=True).order_by('id')
+
+def personal_inv(request):
+    inventario= Inventario.objects.all(pk=id)
+    contexto = {'inventario': inventario}
+
+    return render(request, "gestion/personal_inv.html", contexto)
