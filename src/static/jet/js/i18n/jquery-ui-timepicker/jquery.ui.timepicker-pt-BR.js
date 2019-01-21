@@ -1,1 +1,12 @@
-/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/static/jet/js/i18n/jquery-ui-timepicker/jquery.ui.timepicker-pt-BR.js
+/* Brazilan initialisation for the timepicker plugin */
+/* Written by Daniel Almeida (quantodaniel@gmail.com). */
+jQuery(function($){
+    $.timepicker.regional['pt-BR'] = {
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                amPmText: ['AM', 'PM'],
+                closeButtonText: 'Fechar',
+                nowButtonText: 'Agora',
+                deselectButtonText: 'Limpar' }
+    $.timepicker.setDefaults($.timepicker.regional['pt-BR']);
+});

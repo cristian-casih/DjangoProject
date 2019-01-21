@@ -1,1 +1,5 @@
-/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/static/jet/js/src/utils/jquery-slidefade.js
+var $ = require('jquery');
+
+$.fn.slideFadeToggle = function(speed, easing, callback) {
+    return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
+};
