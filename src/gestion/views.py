@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import RegModelForm
+from .forms import RegModelForm,Inventarioform
 from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
 def inicio(request):
@@ -60,3 +61,36 @@ def personal_inv(request):
     contexto = {'inventario': inventario}
 
     return render(request, "gestion/personal_inv.html", contexto)
+
+def index_inventario(request):
+    return HttpResponse("Pagina inventario")
+
+class InventarioList(ListView):
+    model: Inventario
+    template_name= 'gestion/inventario_list.html'
+
+class InventarioCreate(CreateView):
+    model= Inventario
+    template_name = 'gestion/inventario_form.html'
+    form_class= Inventarioform
+    second_form_class = RegModelForm
+    success_url = reverse_lazy('gestion:inventario_list')
+
+    def get_context_data(self, **kwargs):
+        context = super(InventarioCreate,self).get_context_data(**kwargs)
+        if 'form' not in context:
+            context['form']= self.form_class(self.request.GET)
+        if 'form2' not in context:
+            context['form2'] = self.form_class(self.request.GET)
+
+    def post(self,request,*args,**kwargs):
+        self.object = self.get_object
+        form = self.form_class(request.POST)
+        form2 = self.second_form_class(request.POST)
+        if form.is_valid() and form2.is_valid():
+            inventario= form.save(commit=False)
+            inventario.personal = form2.save()
+            inventario.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(form=form, form2=form2))

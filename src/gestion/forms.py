@@ -32,7 +32,7 @@ class RegModelForm(forms.ModelForm):
             raise forms.ValidationError("Por favor utiliza un mail con dominio @intel")
         return email
 
-class ModelInventario(forms.ModelForm):
+class Inventarioform(forms.ModelForm):
     class Meta:
         model= Inventario
         fields = [
