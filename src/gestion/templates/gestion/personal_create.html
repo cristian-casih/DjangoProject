@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
-{{ titulo }}
-<hr/>
-<br/>
-
+{% block head_title%}Gestion Personal | {% endblock %}
 {% block content%}
-<form method="POST">{% csrf_token %}
-{{ el_form|crispy }}
-<input type='submit' value='Registrar'/>
+
+
+<form method="POST" action="{% url 'gestion:personal_create' %}">
+    {% csrf_token %}
+    {{ el_form|crispy }}
+    <input type='submit' value='Registrar'/>
 </form>
-<hr/>
+
 {% endblock %}

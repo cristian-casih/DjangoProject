@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% block head_title%}Eliminar Personal{% endblock %}
 {% block content %}
 <form method="post">
     {% csrf_token %}
     <h3>¿Desea eliminar el registro de {{ object.nombre }}?</h3>
-    <input class="btn btn-danger" type="submit">Si, eliminar</input></a>
-    <a class="btn btn-default" href="{% url 'personal:personal_list'%}">Cancelar</a>
+    <input class="btn btn-danger" type="submit" value="Eliminar"/>
+    <input class="btn btn-default" href="{% url 'gestion:personal_list'%}" type="submit"value="Cancelar"/>
 </form>
 {% endblock %}

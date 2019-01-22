@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head_title%}Actualizar Personal | {% endblock %}
+{% block content%}
+
+
+<form method="POST" action="{% url 'gestion:personal_update' pk=personal.id %}" >
+    {% csrf_token %}
+    {{ el_form|crispy }}
+    <input type='submit' value='Actualizar'/>
+</form>
+
+{% endblock %}

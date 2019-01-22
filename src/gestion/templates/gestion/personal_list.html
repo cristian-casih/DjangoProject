@@ -1,27 +1,24 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>PERSONAL</title>
-</head>
+{% block head_title%}PERSONAL{% endblock %}
+
+{% block content %}
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
     <thead>
-    <td>#</td>
-    <td>Dni</td>
-    <td>Nombre</td>
-    <td>Apellido</td>
-    <td>Fecha de Nac</td>
-    <td>Fecha registro</td>
-    <td>Email</td>
-    <td>Estado Activo</td>
-    <td>Acciones</td>
-    <td>Nombre Inventario</td>
-    <td>Numero serie</td>
+        <th>#</th>
+        <th>Dni</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha de Nac</th>
+        <th>Fecha registro</th>
+        <th>Email</th>
+        <th>Estado Activo</th>
+        <th>Acciones</th>
+        <th>Nombre Inventario</th>
+        <th>Numero serie</th>
     </thead>
-
+    <tbody>
     {% for personal in object_list %}
     <tr>
         <td> {{ personal.id }}</td>
@@ -32,21 +29,22 @@
         <td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
-            <a class="btn btn-primary" href="{% url 'personal: personal_editar' personal.id%}">Editar</a>
-            <a class="btn btn-danger" href="{% url 'personal: personal_eliminar' personal.id%}">Eliminar</a>
+        <td>
+            <a class="btn btn-primary" href="{% url 'gestion:personal_update' pk=personal.id %}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'gestion:personal_delete' pk=personal.id%}">Eliminar</a>
+        </td>
         {% for inventario in personal.inventario_set.all %}
             <td>{{ inventario.nombre }}</td>
             <td>{{ inventario.numeroserie }}</td>
-            <td>...</td>
         {% empty %}
             <td>¡El personal no tiene inventario !</td>
+            <td></td>
         {% endfor %}
 
-    </tr><br>
+    </tr>
+    </tbody>
 
     {% endfor %}
-    </form>
     </table>
-</html>
 
 {% endblock %}
