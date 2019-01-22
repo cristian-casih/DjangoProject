@@ -69,6 +69,9 @@ class InventarioList(ListView):
     model: Inventario
     template_name= 'gestion/inventario_list.html'
 
+    def get_queryset(self):
+        return Inventario.objects.all
+
 class InventarioCreate(CreateView):
     model= Inventario
     template_name = 'gestion/inventario_form.html'

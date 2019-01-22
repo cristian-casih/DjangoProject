@@ -7,47 +7,35 @@
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
     <thead>
         <th>#</th>
+        <th>Dni</th>
         <th>Nombre</th>
-        <th>numeroserie</th>
-        <th>Descipcion</th>
-        <th>Personal</th>
+        <th>Apellido</th>
+        <th>Fecha de Nac</th>
+        <th>Fecha de Registro</th>
         <th>Email</th>
         <th>Estado Activo</th>
+        <th>Inventario</th>
         <th>Acciones</th>
-        <th>Nombre Inventario</th>
-        <th>Numero serie</th>
     </thead>
     <tbody>
-    {% for inventario in object_list %}
+    {% for personal in object_list %}
     <tr>
         <td> {{ personal.id }}</td>
+        <td> {{ personal.dni }}</td>
         <td> {{ personal.nombre }} </td>
-        <td> {{ personal.numeroserie }} </td>
-        <td> {{ personal.descripcion }} </td>
+        <td> {{ personal.apellido }}</td>
+        <td> {{ personal.fecha_nacimiento|date:"Y-M-D" }} </td>
         <td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
         <td>
-            <a class="btn btn-primary" href="{% url 'gestion:personal_inv' pk=personal.id%}">Ver</a>
-
+             <a class="btn btn-primary">Ver</a>
+        </td>
         <td>
             <a class="btn btn-primary" href="{% url 'gestion:personal_form' pk=personal.id%}">Editar</a>
             <a class="btn btn-danger" href="{% url 'gestion:personal_delete' pk=personal.id%}">Eliminar</a>
         </td>
 
-class Inventarioform(forms.ModelForm):
-    class Meta:
-        model= Inventario
-        fields = [
-            "nombre",
-            "numeroserie",
-            "descripcion",
-        ]
-        labels = {
-            "nombre": "Nombre",
-            "numeroserie": "Numero de serie",
-            "descripcion": "Descripcion",
-        }
     </tr>
     </tbody>
 
