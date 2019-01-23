@@ -1,1 +1,6 @@
-/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/static/jet/js/src/utils/translate.js
+module.exports = function(str) {
+    if (window.django == undefined) {
+        return str;
+    }
+    return django.gettext(str);
+};

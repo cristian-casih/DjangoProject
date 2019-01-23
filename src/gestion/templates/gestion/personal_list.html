@@ -11,12 +11,11 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Fecha de Nac</th>
-        <th>Fecha registro</th>
+        <th>Fecha de Registro</th>
         <th>Email</th>
         <th>Estado Activo</th>
+        <th>Inventario</th>
         <th>Acciones</th>
-        <th>Nombre Inventario</th>
-        <th>Numero serie</th>
     </thead>
     <tbody>
     {% for personal in object_list %}
@@ -24,22 +23,18 @@
         <td> {{ personal.id }}</td>
         <td> {{ personal.dni }}</td>
         <td> {{ personal.nombre }} </td>
-        <td> {{ personal.apellido }} </td>
+        <td> {{ personal.apellido }}</td>
         <td> {{ personal.fecha_nacimiento|date:"Y-M-D" }} </td>
         <td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
         <td>
-            <a class="btn btn-primary" href="{% url 'gestion:personal_update' pk=personal.id %}">Editar</a>
+             <a class="btn btn-primary">Ver</a>
+        </td>
+        <td>
+            <a class="btn btn-primary" href="{% url 'gestion:personal_form' pk=personal.id%}">Editar</a>
             <a class="btn btn-danger" href="{% url 'gestion:personal_delete' pk=personal.id%}">Eliminar</a>
         </td>
-        {% for inventario in personal.inventario_set.all %}
-            <td>{{ inventario.nombre }}</td>
-            <td>{{ inventario.numeroserie }}</td>
-        {% empty %}
-            <td>¡El personal no tiene inventario !</td>
-            <td></td>
-        {% endfor %}
 
     </tr>
     </tbody>

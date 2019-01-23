@@ -1,1 +1,10 @@
-/home/administrador/cristian/cris/DjangoProject/DjangoProject/src/static_dev/css/navbar-top.css
+/* Show it's not fixed to the top */
+body {
+  min-height: 75rem;
+}
+.navbar-static-top {
+    margin-bottom: 19px;
+}
+.lead {
+    text-align: center;
+}

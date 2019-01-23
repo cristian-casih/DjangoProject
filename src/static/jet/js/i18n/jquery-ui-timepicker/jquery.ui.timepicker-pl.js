@@ -1,1 +1,12 @@
-/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/static/jet/js/i18n/jquery-ui-timepicker/jquery.ui.timepicker-pl.js
+/* Polish initialisation for the timepicker plugin */
+/* Written by Mateusz Wadolkowski (mw@pcdoctor.pl). */
+jQuery(function($){
+    $.timepicker.regional['pl'] = {
+                hourText: 'Godziny',
+                minuteText: 'Minuty',
+                amPmText: ['', ''],
+				closeButtonText: 'Zamknij',
+                nowButtonText: 'Teraz',
+                deselectButtonText: 'Odznacz'}
+    $.timepicker.setDefaults($.timepicker.regional['pl']);
+});

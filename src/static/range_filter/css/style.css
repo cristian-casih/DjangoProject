@@ -1,1 +1,15 @@
-/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/static/range_filter/css/style.css
+.admindatefilter fieldset.module {
+	padding: 10px;
+}
+
+.admindatefilter .form-row {
+	padding: 10px;
+}
+
+.admindatefilter .controls {
+	padding: 0 20px 20px 20px;
+}
+
+.admindatefilter .controls input[type="submit"] {
+	margin-bottom: 0 !important;
+}

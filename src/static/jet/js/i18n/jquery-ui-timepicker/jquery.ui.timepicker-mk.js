@@ -1,1 +1,13 @@
-/home/administrador/cristian/cris/DjangoProject/env/lib/python3.6/site-packages/jet/static/jet/js/i18n/jquery-ui-timepicker/jquery.ui.timepicker-mk.js
+/* Macedonian initialisation for the timepicker plugin */
+/* Written by Stojance Panov. */
+jQuery(function($){
+    $.timepicker.regional['mk'] = {
+                hourText: 'Час',
+                minuteText: 'Минути',
+                amPmText: ['Претпладне', 'Попладне'],
+                closeButtonText: 'Затвори',
+                nowButtonText: 'Сега',
+                deselectButtonText: 'Поништи'}
+
+    $.timepicker.setDefaults($.timepicker.regional['mk']);
+});

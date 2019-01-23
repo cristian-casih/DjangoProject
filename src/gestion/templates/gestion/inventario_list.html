@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title%}Inventario{% endblock %}
+
+{% block content %}
+<table class="table table-bordered" action="." method="post">{% csrf_token %}
+    <thead>
+        <th>#</th>
+        <th>Nombre Inventario</th>
+        <th>Numero serie</th>
+        <th>Nombre Personal</th>
+        <th>Descripcion</th>
+    </thead>
+    <tbody>
+    {% if object_list %}
+    {% for inventario in object_list %}
+    <tr>
+        <td> {{ inventario.id }}</td>
+        <td> {{ inventario.nombre }} </td>
+        <td> {{ inventario.numeroserie }} </td>
+        <td> {{ inventario.personal.nombre }} </td>
+        <td> {{ inventario.descripcion }} </td>
+        <td>
+            <a class="btn btn-primary" href="#">Editar</a>
+            <a class="btn btn-danger" href="#">Eliminar</a>
+        </td>
+
+    </tr>
+
+    {% endfor %}
+    {% else %}
+    <h1>No hay registros !!</h1>
+    {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

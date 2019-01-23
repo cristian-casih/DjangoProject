@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head_title%} Gestion Inventario | {% endblock %}
+{% block content%}
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form2|crispy }}
+    {{ form|crispy }}
+
+    <input type='submit' value='Registrar'/>
+</form>
+
+{% endblock %}
