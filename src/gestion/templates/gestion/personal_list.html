@@ -28,8 +28,16 @@
         <td> {{ personal.fecha_registro|date:"Y-M-D" }} </td>
         <td> {{ personal.email }} </td>
         <td> {{ personal.estadoactivo }} </td>
+    {% for inventario in personal.inventario_set.all %}
+        <td>{{ inventario.nombre }}</td>
+        <td>{{ inventario.numeroserie }}</td>
+    {% empty %}
+        <td>¡El personal no tiene inventario !</td>
+        <td></td>
+    {% endfor %}
+
         <td>
-             <a class="btn btn-primary">Ver</a>
+             <a class="btn btn-primary"  href="{% url 'gestion:personal_inv' pk=personal.id%}">Ver</a>
         </td>
         <td>
             <a class="btn btn-primary" href="{% url 'gestion:personal_form' pk=personal.id%}">Editar</a>

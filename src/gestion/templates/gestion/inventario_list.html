@@ -11,9 +11,11 @@
         <th>Numero serie</th>
         <th>Nombre Personal</th>
         <th>Descripcion</th>
+        <th>Estado Activo</th>
+        <th>Acciones</th>
     </thead>
     <tbody>
-    {% if object_list %}
+
     {% for inventario in object_list %}
     <tr>
         <td> {{ inventario.id }}</td>
@@ -21,17 +23,17 @@
         <td> {{ inventario.numeroserie }} </td>
         <td> {{ inventario.personal.nombre }} </td>
         <td> {{ inventario.descripcion }} </td>
+        <td> {{ inventario.estadoactivo }} </td>
+
         <td>
-            <a class="btn btn-primary" href="#">Editar</a>
-            <a class="btn btn-danger" href="#">Eliminar</a>
+            <a class="btn btn-primary" href="{% url 'gestion:inventario_form' pk=inventario.id%}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'gestion:inventario_delete' pk=inventario.id%}">Eliminar</a>
         </td>
 
     </tr>
 
     {% endfor %}
-    {% else %}
-    <h1>No hay registros !!</h1>
-    {% endif %}
+
     </tbody>
 </table>
 

@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block head_title%}Inventario de Personal{% endblock %}
+
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-        {% if  inventario in personal%}
+<table class="table table-bordered" action="." method="post">{% csrf_token %}
+    <tbody>
+    <thead>
+        <th>#</th>
+        <th>Nombre Inventario</th>
+        <th>Numero serie</th>
+    </thead>
+    </tbody>
+        {% if inventario %}
+        {% for inventario in inventario %}
         {% for inventario in personal.inventario_set.all %}
+        <tr>
             <td>{{ inventario.nombre }}</td>
             <td>{{ inventario.numeroserie }}</td>
-        {% empty %}
-            <td>¡El personal no tiene inventario !</td>
-            <td></td>
+
         {% endfor %}
+        {% endfor %}
+        </tr>
+        {% else %}
+        <h1>no hay registros!</h1>
         {% endif %}
-</form>
+</table>
 {% endblock %}

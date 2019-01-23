@@ -37,11 +37,13 @@ class Inventarioform(forms.ModelForm):
     class Meta:
         model = Inventario
         fields = [
+            "personal",
             "nombre",
             "numeroserie",
             "descripcion",
         ]
         labels = {
+
             "nombre": "Nombre",
             "numeroserie": "Numero de serie",
             "descripcion": "Descripcion",
