@@ -4,25 +4,32 @@
 
 {% block content %}
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
-    <tbody>
     <thead>
-        <th>#</th>
-        <th>Nombre Inventario</th>
-        <th>Numero serie</th>
+        <tr>
+            <th>Apellido Personal</th>
+            <th>Nombre Inventario</th>
+            <th>Numero serie</th>
+        </tr>
     </thead>
-    </tbody>
-        {% if inventario %}
-        {% for inventario in inventario %}
+    <tbody>
+
+        {% for personal in object_list %}
         {% for inventario in personal.inventario_set.all %}
         <tr>
+            <td>{{ personal.apellido }}</td>
             <td>{{ inventario.nombre }}</td>
             <td>{{ inventario.numeroserie }}</td>
 
-        {% endfor %}
-        {% endfor %}
+        {% empty %}
+        <tr>
+            <td>{{ personal.apellido }}</td>
+            <td>¡El personal no tiene inventario !</td>
+
         </tr>
-        {% else %}
-        <h1>no hay registros!</h1>
-        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+    </tbody>
 </table>
 {% endblock %}
+
