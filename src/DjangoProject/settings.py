@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
     'gestion.apps.GestionConfig',
+    'usuario.apps.UsuarioConfig',
 
 ]
 

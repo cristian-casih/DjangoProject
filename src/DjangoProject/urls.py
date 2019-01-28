@@ -23,6 +23,7 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('gestion/', include('gestion.urls', 'gestion')),
+    path('usuario/', include('usuario.urls', 'usuario')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
