@@ -14,6 +14,7 @@ urlpatterns = [
     path('inventario/', views.InventarioList.as_view(), name='inventario_list'),
     path('nuevoinventario', views.InventarioCreate.as_view(), name='inventario_form'),
     path('editarinventario/<int:pk>/', views.InventarioUpdate.as_view(), name='inventario_form'),
-    path('eliminarinventario/<int:pk>/', views.InventarioDelete.as_view(), name='inventario_delete')
+    path('eliminarinventario/<int:pk>/', views.InventarioDelete.as_view(), name='inventario_delete'),
+
 
 ]
