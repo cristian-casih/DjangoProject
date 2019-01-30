@@ -43,6 +43,7 @@ class PersonalIList(ListView):
 
     def get_queryset(self):
         return Personal.objects.filter(estadoactivo=True).order_by('id')
+        #return Personal.objects.get(pk=1)
 
 
 def personal_inv(self):
@@ -69,6 +70,7 @@ class InventarioList(ListView):
 
     def get_queryset(self):
         return Inventario.objects.all
+
 
 
 class InventarioCreate(CreateView):
