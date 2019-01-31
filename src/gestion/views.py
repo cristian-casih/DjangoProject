@@ -46,15 +46,19 @@ class PersonalIList(ListView):
         #return Personal.objects.get(pk=1)
 
 
-def personal_inv(self):
-    if self.request.GET.get('id'):
-        self.id = self.request.GET.get('id')
-        inventario = Inventario.objects.filter(personal=self.id).first()
-        return [inventario] if inventario else None
+def personal_inv(self,request,pk):
+    id_personal = self.request.GET.get(pk, '0')
+    if id_personal != '0':
+        inventario = Inventario.objects.filter(personal=id_personal)
+        print (inventario)
+        context = {
+            "inventario": inventario
+        }
+        #return [inventario] if inventario else None
     else:
             return None
 
-    # return render(request, "gestion/personal_inv.html", contexto)
+    return render(request, "gestion/personal_inv.html",context)
     # def get_sympatizers_to_reference(self):
     #     if self.request.GET.get('q'):
     #         self.q = self.request.GET.get('q')
