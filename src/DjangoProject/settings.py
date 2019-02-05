@@ -141,6 +141,7 @@ STATICFILES_FINDERS = [
 
 ]
 LOGIN_REDIRECT_URL = reverse_lazy('gestion:personal_list')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

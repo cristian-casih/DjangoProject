@@ -6,6 +6,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
+
 def inicio(request):
     return render(request, "gestion/inicio.html")
 
@@ -75,12 +76,12 @@ class InventarioList(ListView):
         return Inventario.objects.all
 
 
-
 class InventarioCreate(CreateView):
     model = Inventario
     template_name = 'gestion/inventario_form.html'
     form_class = Inventarioform
     success_url = reverse_lazy('gestion:inventario_list')
+
 
 class InventarioUpdate(UpdateView):
     model = Inventario
