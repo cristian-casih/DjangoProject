@@ -12,7 +12,8 @@
         </tr>
     </thead>
     <tbody>
-        {% if inventario  %}
+        <!--REVEER ESTE IF!!!!-->
+        {% if inventario.personal.id in inventario  %}
         <tr>
             <td>{{ personal.apellido }}</td>
             <td>{{ inventario.nombre }}</td>
@@ -28,7 +29,3 @@
     </tbody>
 </table>
 {% endblock %}
-{% comment %}
-aaaa
-
-{% endcomment %}

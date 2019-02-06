@@ -11,8 +11,9 @@ urlpatterns = [
     path('editarpersonal/<int:pk>/', login_required(views.PersonalUpdate.as_view()), name = 'personal_form'),
     path('eliminarpersonal/<int:pk>/', login_required(views.PersonalDelete.as_view()), name='personal_delete'),
     path('personal/', login_required(views.PersonalList.as_view()), name ='personal_list'),
-    path('prueba/<int:pk>/', login_required(views.personal_inv), name='personal_inv'),
-    path('personalinv/<int:pk>/', login_required(views.PersonalIList.as_view()), name='personal_inv'),
+    #url de la vista basada en funcion (personal_inv)
+    #path('prueba/<int:pk>/', login_required(views.personal_inv), name='prueba'),
+    path('prueba/<int:pk>/', login_required(views.PersonalIList.as_view()), name='prueba'),
     path('inventario/', login_required(views.InventarioList.as_view()), name='inventario_list'),
     path('nuevoinventario', login_required(views.InventarioCreate.as_view()), name='inventario_form'),
     path('editarinventario/<int:pk>/', login_required(views.InventarioUpdate.as_view()), name='inventario_form'),
