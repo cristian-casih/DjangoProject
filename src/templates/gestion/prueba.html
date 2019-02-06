@@ -12,23 +12,20 @@
         </tr>
     </thead>
     <tbody>
-
-        {% for personal in object_list %}
-        {% for inventario in personal.inventario_set.all %}
+        <!--REVEER ESTE IF!!!!-->
+        {% if inventario.personal.id in inventario  %}
         <tr>
             <td>{{ personal.apellido }}</td>
             <td>{{ inventario.nombre }}</td>
             <td>{{ inventario.numeroserie }}</td>
 
-        {% empty %}
+        {% else %}
         <tr>
             <td>{{ personal.apellido }}</td>
             <td>¡El personal no tiene inventario !</td>
 
         </tr>
-        {% endfor %}
-        {% endfor %}
-
+        {% endif %}
     </tbody>
 </table>
 {% endblock %}
