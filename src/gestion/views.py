@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import Personalform, Inventarioform
 from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
@@ -35,45 +37,26 @@ class PersonalDelete(DeleteView):
 class PersonalList(ListView):
     model = Personal
     template_name = 'gestion/personal_list.html'
+    context_object_name = 'personal'
+    paginate_by = 10
+    queryset = Personal.objects.all()
 
     def get_queryset(self):
         return Personal.objects.filter(estadoactivo=True).order_by('id')
 
-# Vista basada en clase devuelve el inventario de todas las personas
-# class PersonalIList(ListView):
-#     model = Personal
-#     template_name = 'gestion/personal_inv.html'
-#
-#     def get_queryset(self):
-#         return Personal.objects.filter(estadoactivo=True).order_by('id')
-#         #return Personal.objects.get(pk=1)
 
-# def personal_inv(request, pk):
-#     id_personal = request.GET.get(pk)
-#     if id_personal != '0':
-#         inventario = Inventario.objects.filter(personal=id_personal)
-#         print(inventario)
-#         context = {
-#             "inventario": inventario
-#         }
-#         #return [inventario] if inventario else None
-#     else:
-#             return None
-#     return render(request, "gestion/prueba.html",context)
+@login_required
+def personal_inv(request, personal_id=0):
+    context = {}
+    if personal_id != '0':
+        personal = Personal.objects.get(pk=personal_id)
+        inventario = Inventario.objects.filter(personal=personal_id)
+        context = {
+            "personal": personal,
+            "inventario": inventario
+        }
 
-class PersonalIList(ListView):
-     model = Personal
-     template_name = 'gestion/prueba.html'
-     queryset = Personal.objects.all()
-
-     def get_object(self):
-         queryset = self.get_queryset()
-         context = get_object_or_404(
-             queryset,
-             pk=self.kwargs['pk'],
-             )
-
-         return context
+    return render(request, "gestion/inv_personal.html",context)
 
 
 class InventarioList(ListView):

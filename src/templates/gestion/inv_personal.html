@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load crispy_forms_tags %}
+{% block head_title%}Inventario de Personal{% endblock %}
+
+{% block content %}
+<h2>Personal : {{ personal }}</h2>
+<h2>Apellido Personal : {{ personal.apellido }}</h2>
+<hr>
+<table class="table table-bordered" action="." method="post">{% csrf_token %}
+    <thead>
+        <tr>
+            <th>Nombre Inventario</th>
+            <th>Numero serie</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in inventario%}
+        <tr>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.numeroserie }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
