@@ -62,9 +62,12 @@ def personal_inv(request, personal_id=0):
 class InventarioList(ListView):
     model = Inventario
     template_name = 'gestion/inventario_list.html'
+    context_object_name = 'inventario'
+    paginate_by = 10
+    queryset = Inventario.objects.all()
 
     def get_queryset(self):
-        return Inventario.objects.all
+        return Inventario.objects.filter(estadoactivo=True).order_by('id')
 
 
 class InventarioCreate(CreateView):

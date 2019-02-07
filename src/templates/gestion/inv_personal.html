@@ -3,8 +3,8 @@
 {% block head_title%}Inventario de Personal{% endblock %}
 
 {% block content %}
-<h2>Personal : {{ personal }}</h2>
-<h2>Apellido Personal : {{ personal.apellido }}</h2>
+<h2>Nombre   : {{ personal.nombre }}</h2>
+<h2>Apellido : {{ personal.apellido }}</h2>
 <hr>
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
     <thead>
@@ -19,7 +19,12 @@
             <td>{{ item.nombre }}</td>
             <td>{{ item.numeroserie }}</td>
         </tr>
+
         {% endfor %}
+
     </tbody>
+
 </table>
+<a class="btn btn-outline-secondary" href="../../../gestion/personal/" role="button">Volver al Listado</a>
+
 {% endblock %}

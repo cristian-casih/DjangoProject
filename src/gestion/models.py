@@ -14,7 +14,7 @@ class Personal(models.Model):
     estadoactivo = models.BooleanField(default=True,null=True, blank=True, editable=True)
 
     def __str__(self):
-        return "{}".format(self.id)
+        return "{}".format(self.apellido)
 
 
 class Inventario(models.Model):
