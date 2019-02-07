@@ -4,6 +4,7 @@ from .forms import Personalform, Inventarioform
 from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
@@ -36,6 +37,9 @@ class PersonalDelete(DeleteView):
 class PersonalList(ListView):
     model = Personal
     template_name = 'gestion/personal_list.html'
+    context_object_name = 'personal'
+    paginate_by = 10
+    queryset = Personal.objects.all()
 
     def get_queryset(self):
         return Personal.objects.filter(estadoactivo=True).order_by('id')
