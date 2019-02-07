@@ -10,6 +10,7 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Email</th>
+        <th>Inventario</th>
         <th>Acciones</th>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
         <td> {{ personal.nombre }} </td>
         <td> {{ personal.apellido }}</td>
         <td> {{ personal.email }} </td>
+        <td>
+            <a class="btn btn-primary" href="{% url 'gestion:inv_personal' personal_id=personal.id%}">Ver</a>
+        </td>
         <td>
             <a class="btn btn-primary" href="{% url 'gestion:personal_form' pk=personal.id%}">Editar</a>
             <a class="btn btn-danger" href="{% url 'gestion:personal_delete' pk=personal.id%}">Eliminar</a>
