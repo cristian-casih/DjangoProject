@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 {% load crispy_forms_tags %}
 
-{% block head_title%}PERSONAL{% endblock %}
+{% block head_title%}Personal {% endblock %}
 
 {% block content %}
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
@@ -21,7 +21,8 @@
         <td> {{ personal.apellido }}</td>
         <td> {{ personal.email }} </td>
         <td>
-            <a class="btn btn-primary" href="{% url 'gestion:inv_personal' personal_id=personal.id%}">Ver</a>
+            <a class="btn btn-primary" href="{% url 'gestion:inv_personal' personal_id=personal.id%}" >Ver</a>
+
         </td>
         <td>
             <a class="btn btn-primary" href="{% url 'gestion:personal_form' pk=personal.id%}">Editar</a>
