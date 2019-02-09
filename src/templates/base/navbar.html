@@ -40,25 +40,17 @@
             </div>
           </li>
         </ul>
-        <ul class="nav justify-content-left">
-        <nav class="navbar navbar-light ">
-          <a class="navbar-brand mr-0 mr-md-0" href="www.github.com/cristian-casih/DjangoProject">
+        <form class="form-inline my-2 my-lg-0">
+          <a class="navbar-brand mr-sm-0" href="www.github.com/cristian-casih/DjangoProject">
             <img src="{% static 'img/github.png'%}" width="48" height="40" class="d-inline-block align-top" alt="">
           </a>
-        </nav>
-          <li class="nav-item dropdown mr-0 mr-md-0">
-            <a class="nav-link dropdown-toggle mr-0 mr-md-8" href="#" role="button" data-toggle="dropdown" >Opciones</a>
+            <a class="nav-link dropdown-toggle mr-md-2" href="#" role="button" data-toggle="dropdown" >Opciones</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'logout' %}">Salir </a>
             </div>
-          </li>
-          <nav class="navbar navbar-light">
-            <form class="form-inline">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
-          </nav>
-        </ul>
       </div>
     </nav>
 
