@@ -4,8 +4,9 @@ from .forms import Personalform, Inventarioform
 from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
 
 # Create your views here.
 
