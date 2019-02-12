@@ -130,8 +130,8 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 PROJECT_DIR = BASE_DIR
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-print (STATIC_ROOT)
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+print(MEDIA_ROOT)
 STATICFILES_DIRS = [
     'static_dev'
 ]

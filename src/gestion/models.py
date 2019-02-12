@@ -23,4 +23,5 @@ class Inventario(models.Model):
     numeroserie = models.IntegerField(null=True, blank=True)
     estadoactivo = models.BooleanField(default=True,null=True, blank=True, editable=True)
     #imagen = models.ImageField(blank=True, null=True, verbose_name='Photo')
+    imagen = models.ImageField(blank=True, null=True, verbose_name="Photo", upload_to="inventario")
     descripcion = models.TextField()

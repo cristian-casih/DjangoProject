@@ -41,12 +41,14 @@ class Inventarioform(forms.ModelForm):
             "nombre",
             "numeroserie",
             "descripcion",
+            "imagen",
         ]
         labels = {
 
             "nombre": "Nombre",
             "numeroserie": "Numero de serie",
             "descripcion": "Descripcion",
+            "imagen": " Imagen",
         }
 
 
