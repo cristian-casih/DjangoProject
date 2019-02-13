@@ -18,6 +18,7 @@
         <tr>
             <td>{{ item.nombre }}</td>
             <td>{{ item.numeroserie }}</td>
+            <td> {% if inventario.imagen %}<img src="{{ inventario.imagen.url }}"> {% endif %}</td>
         </tr>
 
         {% endfor %}

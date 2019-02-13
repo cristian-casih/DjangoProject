@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('gestion/', include('gestion.urls', 'gestion')),
     path('usuario/', include('usuario.urls', 'usuario')),
+    #path(r'media/(?P<path>.*)$',django.views.static.serve, {'document_root': settings.MEDIA_ROOT,}),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/',  auth_views.LogoutView.as_view(),name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
@@ -39,4 +40,4 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

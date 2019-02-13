@@ -25,7 +25,7 @@
         <td> {{ inventario.personal.nombre }} </td>
         <td> {{ inventario.descripcion }} </td>
         <td> {{ inventario.estadoactivo }} </td>
-        <td> {{ inventario.imagen }} </td>
+        <td> {% if inventario.imagen %}<img src="{{ inventario.imagen.url }}"> {% endif %}</td>
 
         <td>
             <a class="btn btn-primary" href="{% url 'gestion:inventario_form' pk=inventario.id%}">Editar</a>
