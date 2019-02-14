@@ -1,7 +1,8 @@
 {% extends "base/base.html" %}
+{% load thumbnail %}
 {% load crispy_forms_tags %}
 
-{% block head_title%}Inventario{% endblock %}
+{% block head_title%}Inventario {% endblock %}
 
 {% block content %}
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
@@ -25,10 +26,10 @@
         <td> {{ inventario.personal.nombre }} </td>
         <td> {{ inventario.descripcion }} </td>
         <td> {{ inventario.estadoactivo }} </td>
-        <td> {% if inventario.imagen %}<img src="{{ inventario.imagen.url }}"> {% endif %}</td>
-
+        <td>{% thumbnail inventario.imagen "100x100" crop="center" as im %}
+            <img src="{{ inventario.imagen.url }}" width="{{ im.width }}" height="{{ im.height }}"> {% endthumbnail %} </td>
         <td>
-            <a class="btn btn-primary" href="{% url 'gestion:inventario_form' pk=inventario.id%}">Editar</a>
+        <a class="btn btn-primary" href="{% url 'gestion:inventario_form' pk=inventario.id%}">Editar</a>
             <a class="btn btn-danger" href="{% url 'gestion:inventario_delete' pk=inventario.id%}">Eliminar</a>
         </td>
 

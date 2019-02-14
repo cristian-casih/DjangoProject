@@ -1,31 +1,36 @@
 {% extends "base/base.html" %}
+{% load thumbnail %}
 {% load crispy_forms_tags %}
 {% block head_title%}Inventario de Personal{% endblock %}
 
 {% block content %}
-<h2>Nombre   : {{ personal.nombre }}</h2>
-<h2>Apellido : {{ personal.apellido }}</h2>
+<h2>Nombre   :{{ personal.nombre }}</h2>
+<h2>Apellido :{{ personal.apellido }}</h2>
 <hr>
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
     <thead>
-        <tr>
-            <th>Nombre Inventario</th>
-            <th>Numero serie</th>
-        </tr>
+        <th>Nombre Inventario</th>
+        <th>Numero serie</th>
+        <th>Imagen Inventario</th>
     </thead>
     <tbody>
+    {% if inventario%}
         {% for item in inventario%}
         <tr>
             <td>{{ item.nombre }}</td>
             <td>{{ item.numeroserie }}</td>
-            <td> {% if inventario.imagen %}<img src="{{ inventario.imagen.url }}"> {% endif %}</td>
+            <td>{% thumbnail item.imagen "100x100" crop="center" as im %}
+                <img src="{{ item.imagen.url }}" width="{{ im.width }}" height="{{ im.height }}"> {% endthumbnail %} </td>
         </tr>
 
         {% endfor %}
 
+            <th>{% else %}<h3>No tiene inventario el personal!!!</h3>
+                {% endif%}</th>
     </tbody>
 
 </table>
 <a class="btn btn-secondary btn-lg" href="../../../gestion/personal/" role="button">Volver al Listado</a>
 
 {% endblock %}
+</form>
