@@ -16,6 +16,6 @@ urlpatterns = [
     path('nuevoinventario', login_required(views.InventarioCreate.as_view()), name='inventario_form'),
     path('editarinventario/<int:pk>/', login_required(views.InventarioUpdate.as_view()), name='inventario_form'),
     path('eliminarinventario/<int:pk>/', login_required(views.InventarioDelete.as_view()), name='inventario_delete'),
-
+    path('resultado/', views.search, name="search")
 
 ]

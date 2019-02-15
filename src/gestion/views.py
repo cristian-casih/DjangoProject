@@ -5,6 +5,9 @@ from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.db.models import Q
+from django.core.paginator import Paginator ,EmptyPage, PageNotAnInteger
+
 
 
 
@@ -89,3 +92,25 @@ class InventarioDelete(DeleteView):
     model = Inventario
     template_name = "gestion/inventario_delete.html"
     success_url = reverse_lazy("gestion:inventario_list")
+
+
+def search(request):
+    query= request.GET.get('q')
+    if query:
+        results=Personal.objects.filter(nombre__icontains=query)
+    # paginator=Paginator(results ,10)
+    # page_request_var="page"
+    # page=request.GET.get(page_request_var)
+    # try:
+    #     results=paginator.page(page)
+    # except PageNotAnInteger:
+    #     results=paginator.page(1)
+    # except EmptyPage:
+    #     results=paginator.page(paginator.num_pages)
+
+
+    context = {
+        "results": results,
+        # "page_request_var":page_request_var,
+    }
+    return render(request, 'gestion/inventario_list.html',context)

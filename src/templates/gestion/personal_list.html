@@ -4,6 +4,13 @@
 {% block head_title%}Personal {% endblock %}
 
 {% block content %}
+<form method="GET" action="{% url 'gestion:search'%}">
+    <input name="q" value="{{request.GET.q}}" placeholder="search..">
+    <button class="btn btn-sucess" type="submit">
+        Search
+    </button>
+
+</form>
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
     <thead>
         <th>#</th>
