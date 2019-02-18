@@ -47,6 +47,14 @@ class PersonalList(ListView):
 
     def get_queryset(self):
         return Personal.objects.filter(estadoactivo=True).order_by('id')
+    # def get_queryset(self):
+    #     result = super(PersonalList, self).get_queryset()
+    #
+    #     query = self.request.GET.get('q')
+    #     if query:
+    #         result = Personal.objects.filter(nombre__icontains=query)
+    #
+    #     return result
 
 
 @login_required
@@ -74,6 +82,7 @@ class InventarioList(ListView):
         return Inventario.objects.filter(estadoactivo=True).order_by('id')
 
 
+
 class InventarioCreate(CreateView):
     model = Inventario
     template_name = 'gestion/inventario_form.html'
@@ -95,22 +104,38 @@ class InventarioDelete(DeleteView):
 
 
 def search(request):
-    query= request.GET.get('q')
+    queryset_list = Personal.objects.all()
+    query = request.GET.get('q')
     if query:
-        results=Personal.objects.filter(nombre__icontains=query)
-    # paginator=Paginator(results ,10)
-    # page_request_var="page"
-    # page=request.GET.get(page_request_var)
-    # try:
-    #     results=paginator.page(page)
-    # except PageNotAnInteger:
-    #     results=paginator.page(1)
-    # except EmptyPage:
-    #     results=paginator.page(paginator.num_pages)
+
+        queryset_list = queryset_list.filter(
+            Q(dni__icontains=query) |
+            Q(nombre__icontains=query) |
+            Q(apellido__icontains=query)
+            ).distinct()
+
+    paginator = Paginator(queryset_list, 2)
+    page_request_var = "page"
+    page=request.GET.get(page_request_var)
+    try:
+        results = paginator.page(page)
+    except PageNotAnInteger:
+        results = paginator.page(1)
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
 
 
     context = {
+        "object_list": queryset_list,
         "results": results,
-        # "page_request_var":page_request_var,
+        "page_request_var":page_request_var,
     }
-    return render(request, 'gestion/inventario_list.html',context)
+    return render(request, 'gestion/personal_list.html',context)
+    # def get_queryset(self):
+    #     result = super(PersonalList, self).get_queryset()
+    #
+    #     query = self.request.GET.get('q')
+    #     if query:
+    #         result = Personal.objects.filter(nombre__icontains=query)
+    #
+    #     return result
