@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
-
 import datetime
 
 # Create your models here.
@@ -25,5 +23,4 @@ class Inventario(models.Model):
     numeroserie = models.IntegerField(null=True, blank=True)
     estadoactivo = models.BooleanField(default=True,null=True, blank=True, editable=True)
     imagen = models.ImageField(blank=True, null=True, upload_to="inventario")
-    #imagen = StdImageField(upload_to='inventario', variations={'thumbnail': (100, 75)})
     descripcion = models.TextField()
