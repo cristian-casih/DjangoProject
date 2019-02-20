@@ -4,6 +4,8 @@
 {% block content%}
 
 
+<h2>Gestion Personal</h2>
+<hr>
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
@@ -11,10 +13,7 @@
 </form>
 
 <br>
-<hr>
-<h2>Inventario</h2>
-<div id="invlist" class="spinner-border" role="status">
-  <span class="sr-only">Loading...</span>
-</div>
+
+
 {% endblock %}
 
