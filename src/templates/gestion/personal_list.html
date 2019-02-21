@@ -6,12 +6,26 @@
 {% block content %}
 <h2>Listado Personal</h2>
 <hr>
-<form method="GET" action="{% url 'gestion:search'%}">
+<div class="row no-gutters">
+    <div class="col">
+    <form method="GET" action="{% url 'gestion:search'%}">
         <input type="search" name="q" value="{{request.GET.q}}" placeholder="Buscar">
-            <i class="ion-search"></i>
-
-</form>
-
+    <button class="btn btn-secondary border-left-0 rounded-0 rounded-right" type="button">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    </form>
+</div>
+</div>
+<div class="row no-gutters">
+     <div class="col">
+          <input class="form-control border-secondary border-right-0 rounded-0" type="search" value="search" id="example-search-input4">
+     </div>
+     <div class="col-auto">
+          <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" type="button">
+             <i class="fa fa-search"></i>
+          </button>
+     </div>
+</div>
 <br>
 <table class="table table-bordered" action="." method="post">{% csrf_token %}
     <thead>
