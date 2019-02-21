@@ -18,17 +18,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from django.views.generic import RedirectView
 
 
 
 
 urlpatterns = [
+
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('jet/', include('jet.urls', 'jet')),
+    path('', RedirectView.as_view(url='/gestion/', permanent=True)),
     path('admin/', admin.site.urls),
     path('gestion/', include('gestion.urls', 'gestion')),
     path('usuario/', include('usuario.urls', 'usuario')),
-    #path(r'media/(?P<path>.*)$',django.views.static.serve, {'document_root': settings.MEDIA_ROOT,}),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/',  auth_views.LogoutView.as_view(),name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
