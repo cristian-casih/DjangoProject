@@ -31,18 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-
+    'jet.dashboard',
+    'jet',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
-    'jet.dashboard',
-    'jet',
     'gestion.apps.GestionConfig',
     'usuario.apps.UsuarioConfig',
+    'sorl.thumbnail',
 
 ]
 
@@ -128,11 +128,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
+
 PROJECT_DIR = BASE_DIR
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-print (STATIC_ROOT)
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     'static_dev'
 ]
@@ -142,11 +142,12 @@ STATICFILES_FINDERS = [
 
 ]
 LOGIN_REDIRECT_URL = reverse_lazy('gestion:personal_list')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'cristiancasih@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'cristiancasih1@gmail.com'
 EMAIL_HOST_PASSWORD = 'sqlserver#include12'
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.Emailbackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

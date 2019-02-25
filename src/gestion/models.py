@@ -14,7 +14,7 @@ class Personal(models.Model):
     estadoactivo = models.BooleanField(default=True,null=True, blank=True, editable=True)
 
     def __str__(self):
-        return self.apellido
+        return "{}".format(self.apellido)
 
 
 class Inventario(models.Model):
@@ -22,5 +22,5 @@ class Inventario(models.Model):
     nombre = models.CharField(max_length=100, null=True, blank=True)
     numeroserie = models.IntegerField(null=True, blank=True)
     estadoactivo = models.BooleanField(default=True,null=True, blank=True, editable=True)
-    #imagen = models.ImageField(blank=True, null=True, verbose_name='Photo')
+    imagen = models.ImageField(blank=True, null=True, upload_to="inventario")
     descripcion = models.TextField()

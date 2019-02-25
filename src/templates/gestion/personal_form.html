@@ -1,13 +1,19 @@
 {% extends "base/base.html" %}
 {% load crispy_forms_tags %}
-{% block head_title%}Gestion Personal | {% endblock %}
+{% block head_title%}Gestion Personal {% endblock %}
 {% block content%}
 
 
+<h2>Gestion Personal</h2>
+<hr>
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
     <input type='submit' value='Registrar'/>
 </form>
 
+<br>
+
+
 {% endblock %}
+
