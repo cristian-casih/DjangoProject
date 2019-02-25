@@ -32,12 +32,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('gestion/', include('gestion.urls', 'gestion')),
     path('usuario/', include('usuario.urls', 'usuario')),
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/',  auth_views.LogoutView.as_view(),name='logout'),
-    path('password_reset/', views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # path('logout/',  auth_views.LogoutView.as_view(),name='logout'),
+    # path('password_reset/', views.PasswordResetView.as_view(), name='password_reset'),
+    # path('password_reset/done/', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    # path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    # path('reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
 ]
 if settings.DEBUG:
