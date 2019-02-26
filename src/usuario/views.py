@@ -23,6 +23,3 @@ class RegistroUsuario(LoginRequiredMixin,CreateView):
     form_class = RegistroForm
     success_url = reverse_lazy("gestion:personal_list")
 
-class InventarioCreate(LoginRequiredMixin,CreateView):
-    login_url = '/accounts/login/'
-    redirect_field_name = 'redirect_to'
