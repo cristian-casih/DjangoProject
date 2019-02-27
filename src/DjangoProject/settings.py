@@ -141,14 +141,12 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
 ]
-LOGIN_REDIRECT_URL = reverse_lazy('gestion:personal_list')
+LOGIN_REDIRECT_URL = reverse_lazy('login')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
-EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'cristiancasih1@gmail.com'
 EMAIL_HOST_PASSWORD = 'sqlserver#include12'
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.Emailbackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+

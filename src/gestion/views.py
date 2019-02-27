@@ -18,7 +18,7 @@ def inicio(request):
 
 
 class PersonalCreate(LoginRequiredMixin, CreateView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Personal
     form_class = Personalform
@@ -27,7 +27,7 @@ class PersonalCreate(LoginRequiredMixin, CreateView):
 
 
 class PersonalUpdate(LoginRequiredMixin,UpdateView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Personal
     form_class = Personalform
@@ -36,7 +36,7 @@ class PersonalUpdate(LoginRequiredMixin,UpdateView):
 
 
 class PersonalDelete(LoginRequiredMixin,DeleteView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Personal
     template_name = "gestion/personal_delete.html"
@@ -44,7 +44,7 @@ class PersonalDelete(LoginRequiredMixin,DeleteView):
 
 
 class PersonalList(LoginRequiredMixin,ListView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Personal
     template_name = 'gestion/personal_list.html'
@@ -71,7 +71,7 @@ def personal_inv(request, personal_id=0):
 
 
 class InventarioList(LoginRequiredMixin,ListView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Inventario
     template_name = 'gestion/inventario_list.html'
@@ -84,7 +84,7 @@ class InventarioList(LoginRequiredMixin,ListView):
 
 
 class InventarioCreate(LoginRequiredMixin,CreateView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Inventario
     template_name = 'gestion/inventario_form.html'
@@ -93,7 +93,7 @@ class InventarioCreate(LoginRequiredMixin,CreateView):
 
 
 class InventarioUpdate(LoginRequiredMixin,UpdateView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Inventario
     form_class = Inventarioform
@@ -102,7 +102,7 @@ class InventarioUpdate(LoginRequiredMixin,UpdateView):
 
 
 class InventarioDelete(LoginRequiredMixin,DeleteView):
-    login_url = '/login/'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
     model = Inventario
     template_name = "gestion/inventario_delete.html"
