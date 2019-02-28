@@ -30,7 +30,7 @@ urlpatterns = [
     path('gestion/', include('gestion.urls', 'gestion')),
     path('usuario/', include('usuario.urls', 'usuario')),
     path('accounts/', include('django.contrib.auth.urls')),
-
+    path('activity/', include('actstream.urls')),
 
 ]
 if settings.DEBUG:

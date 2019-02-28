@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     'gestion.apps.GestionConfig',
     'usuario.apps.UsuarioConfig',
     'sorl.thumbnail',
+    'actstream',
 
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -150,3 +153,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'cristiancasih1@gmail.com'
 EMAIL_HOST_PASSWORD = 'sqlserver#include12'
 
+
+ACTSTREAM_SETTINGS = {
+    'MANAGER': 'myapp.managers.MyActionManager',
+    'FETCH_RELATIONS': True,
+    'USE_PREFETCH': True,
+    'USE_JSONFIELD': True,
+    'GFK_FETCH_DEPTH': 1,
+}

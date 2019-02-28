@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-# Create your models here.
+
+
 class Personal(models.Model):
     dni = models.IntegerField(default=0, null=True, blank= True)
     nombre = models.CharField(max_length=100, null=True, blank=True)
