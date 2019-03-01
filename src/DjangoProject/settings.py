@@ -155,7 +155,7 @@ EMAIL_HOST_PASSWORD = 'sqlserver#include12'
 
 
 ACTSTREAM_SETTINGS = {
-    'MANAGER': 'myapp.managers.MyActionManager',
+    'MANAGER': 'usuario.managers.MyActionManager',
     'FETCH_RELATIONS': True,
     'USE_PREFETCH': True,
     'USE_JSONFIELD': True,
