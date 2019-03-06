@@ -1,10 +1,11 @@
 from django.apps import AppConfig
 from actstream import registry
-from django.contrib.auth.models import User
 
-class UsuarioConfig(AppConfig):
+
+class UserConfig(AppConfig):
     name = 'usuario'
 
+
     def ready(self):
-        registry.register(User,self.get_model('Task'),self.get_model('Supervisor'))
+        registry.register(self.get_model('Tarea'),self.get_model('Supervisor'))
 

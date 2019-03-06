@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'gestion.apps.GestionConfig',
     'usuario.apps.UsuarioConfig',
     'sorl.thumbnail',
-    'actstream',
+    'actstream'
 
 ]
 

@@ -7,4 +7,5 @@ app_name = "usuario"
 urlpatterns = [
     path('', views.index, name='index'),
     path('registrar', views.RegistroUsuario.as_view(), name='registrar_usuario'),
+    path('<slug:slug>/', views.UserDetailView.as_view(), name='user_detail'),
 ]

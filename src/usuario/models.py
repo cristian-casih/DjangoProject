@@ -18,7 +18,7 @@ from django.apps import AppConfig
 #
 #         registry.register(self.get_model('MyModel'))
 
-class Task(models.Model):
+class Tarea(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True,blank=True)
 
@@ -27,8 +27,8 @@ class Task(models.Model):
 
 
 class Supervisor(models.Model):
-    user = models.ForeignKey(User,null=True,blank=True,related_name="supervisor")
-    task = models.ManyToManyField(Task,related_name='tasks')
+    usuario = models.ForeignKey(User, null=True,blank=True, related_name="supervisor")
+    tarea = models.ManyToManyField(Tarea, related_name='tarea')
 
     def __str__(self):
 
