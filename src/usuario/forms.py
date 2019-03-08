@@ -7,6 +7,7 @@ class RegistroForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
+            'user_id'
             'username',
             'first_name',
             'last_name',
@@ -14,6 +15,7 @@ class RegistroForm(UserCreationForm):
 
         ]
         labels = {
+            'user_id' : 'id del usuario',
             'username': 'Nombre de usuario',
             'first_name':'Nombre',
             'last_name':'Apellido',

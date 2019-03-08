@@ -23,3 +23,4 @@ class RegistroUsuario(LoginRequiredMixin,CreateView):
     form_class = RegistroForm
     success_url = reverse_lazy("gestion:personal_list")
 
+

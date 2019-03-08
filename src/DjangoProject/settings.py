@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     'gestion.apps.GestionConfig',
     'usuario.apps.UsuarioConfig',
     'sorl.thumbnail',
-
+    'stream_django'
 ]
+
+STREAM_API_KEY = 'my_api_key'
+STREAM_API_SECRET = 'my_api_secret_key'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
