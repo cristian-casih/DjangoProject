@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
-
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 # Create your models here.
@@ -23,3 +24,19 @@ class Inventario(models.Model):
     estadoactivo = models.BooleanField(default=True,null=True, blank=True, editable=True)
     imagen = models.ImageField(blank=True, null=True, upload_to="inventario")
     descripcion = models.TextField()
+
+def get_personal(models.Model):
+
+    content_type = ContentType.objects.get_for_model(commission)
+    persona = Personal.objects.filter(
+        content_type=content_type,
+        object_id=commission.id,
+        date_to__gte=date.today()
+    )
+
+class Activities(models.Model):
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
