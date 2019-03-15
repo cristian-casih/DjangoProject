@@ -30,6 +30,24 @@
     </tbody>
 
 </table>
+<table class="table table-bordered" action="." method="post">{% csrf_token %}
+
+    {% if activities %}
+        {% for item in activities%}
+        <tr>
+            <td>{{ item.content_type }}</td>
+            <td>{{ item.object_id }}</td>
+            <td>{{ item.content_object }}</td>
+        </tr>
+
+        {% endfor %}
+
+            <th>{% else %}<h3>No tiene inventario el personal!!!</h3>
+                {% endif%}</th>
+    </tbody>
+
+</table>
+
 <a class="btn btn-secondary btn-lg" href="../../../gestion/personal/" role="button">Volver al Listado</a>
 
 

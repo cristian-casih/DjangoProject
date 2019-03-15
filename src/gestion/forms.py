@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Personal, Inventario
+from .models import Personal, Inventario, Activities
 
 
 class Personalform(forms.ModelForm):
@@ -52,4 +52,19 @@ class Inventarioform(forms.ModelForm):
         }
 
 
+class Activitiesform(forms.ModelForm):
+    class Meta:
+        model= Activities
+        fields = [
+            "content_type",
+            "object_id",
+            "content_object",
+        ]
+
+    labels = {
+
+        "content_type": "contenido",
+        "object_id": "objeto_id",
+        "content_object": "content",
+    }
 

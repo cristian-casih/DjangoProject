@@ -25,14 +25,7 @@ class Inventario(models.Model):
     imagen = models.ImageField(blank=True, null=True, upload_to="inventario")
     descripcion = models.TextField()
 
-def get_personal(models.Model):
 
-    content_type = ContentType.objects.get_for_model(commission)
-    persona = Personal.objects.filter(
-        content_type=content_type,
-        object_id=commission.id,
-        date_to__gte=date.today()
-    )
 
 class Activities(models.Model):
 
@@ -40,3 +33,14 @@ class Activities(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
+
+def get_activities():
+
+    content_type = ContentType.objects.get_for_model(Inventario)
+    inventario = Inventario.objects.filter(
+        content_type=content_type,
+        object_id=Inventario.id,
+        date_to__gte=models.DateField.today()
+    )
+
+    return inventario

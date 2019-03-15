@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import Personalform, Inventarioform
+from .forms import Personalform, Inventarioform, Activitiesform
 from .models import Personal, Inventario
 from django.urls import reverse_lazy
 from django.views.generic import ListView
@@ -165,3 +165,6 @@ def search_inventario(request):
         "page_request_var": page_request_var,
     }
     return render(request, 'gestion/inventario_list.html',context)
+
+
+
