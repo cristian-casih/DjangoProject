@@ -26,17 +26,42 @@ class Inventario(models.Model):
     descripcion = models.TextField()
 
 
+#
+# class Activity(models.Model):
+#
+#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     object_id = models.PositiveIntegerField()
+#     content_object = GenericForeignKey('content_type', 'object_id')
+#
+#
+# def get_activities():
+#
+#     content_type = ContentType.objects.get_for_model(Inventario)
+#     inventario = Inventario.objects.filter(
+#         content_type=content_type,
+#         object_id=Inventario.id,
+#         date_to__gte=models.DateField.today()
+#     )
+#
+#     return inventario
 
-class Activities(models.Model):
 
+class Activity(models.Model):
+    ASIGNADO= 'A'
+    ACT='B'
+    ACTIVITY_TYPES = (
+        (ASIGNADO, 'Asignado'),
+        (ACT,'Actividad')
+    )
+
+    inventario = ContentType.objects.get_for_model(Inventario)
+    date = models.DateTimeField(auto_now_add=True)
+    activity_type = models.CharField(max_length=1, choices=ACTIVITY_TYPES)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
-
-def get_activities():
-
-    content_type = ContentType.objects.get_for_model(Inventario)
+    def get_activity():
     inventario = Inventario.objects.filter(
         content_type=content_type,
         object_id=Inventario.id,
@@ -44,3 +69,29 @@ def get_activities():
     )
 
     return inventario
+
+
+
+#[11:13, 15/3/2019] Pablo Vates: agregues 2 metodos. uno que reciba el objeto y le agregue al objeto el contenttype y el contentid
+#[11:14, 15/3/2019] Pablo Vates: y en el objeto que estas agregando las actividad, por ejemplo en el inventario agrega un metodo que
+#sea algo asi como get_activity que filtre las actividade sy devuelva la lista de actividades relacionadas al objeto
+# class Activity(models.Model):
+#     FAVORITE = 'F'
+#     LIKE = 'L'
+#     UP_VOTE = 'U'
+#     DOWN_VOTE = 'D'
+#     ACTIVITY_TYPES = (
+#         (FAVORITE, 'Favorite'),
+#         (LIKE, 'Like'),
+#         (UP_VOTE, 'Up Vote'),
+#         (DOWN_VOTE, 'Down Vote'),
+#     )
+#
+#     user = models.ForeignKey(User)
+#     activity_type = models.CharField(max_length=1, choices=ACTIVITY_TYPES)
+#     date = models.DateTimeField(auto_now_add=True)
+#
+#     # Below the mandatory fields for generic relation
+#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     object_id = models.PositiveIntegerField()
+#     content_object = GenericForeignKey()
