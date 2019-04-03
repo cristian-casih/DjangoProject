@@ -55,20 +55,21 @@ class Activity(models.Model):
     )
 
     inventario = ContentType.objects.get_for_model(Inventario)
-    date = models.DateTimeField(auto_now_add=True)
     activity_type = models.CharField(max_length=1, choices=ACTIVITY_TYPES)
+    date = models.DateTimeField(auto_now_add=True)
+
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
     def get_activity():
-    inventario = Inventario.objects.filter(
-        content_type=content_type,
-        object_id=Inventario.id,
-        date_to__gte=models.DateField.today()
+        inventario = Inventario.objects.filter(
+            content_type=content_type,
+            object_id=Inventario.id,
+            date_to__gte=models.DateField.today()
     )
 
-    return inventario
+        return inventario
 
 
 
